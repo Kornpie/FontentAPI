@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowserRouter as Router, Route , Switch} from "react-router-dom";
+// react-dom ติดตั้งเพื่อใช้ในการการลิ้งค์
+import Home from "./pages/Home";
+import AddProduct from "./pages/AddProduct";
+import EditProduct from "./pages/EditProduct";
+import Menu from "./component/Menu";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+       <Router>
+         <Menu />
+         <Switch>
+           <Route exact path="/" component={Home} />
+           {/* ลิ้งค์ไปหน้าที่กำหนด */}
+           <Route path="/home" component={Home} />
+           <Route path="/add" component={AddProduct} />
+           <Route path="/edit/:id" component={EditProduct} />
+         </Switch>
+       </Router>
   );
-}
+};
 
 export default App;
